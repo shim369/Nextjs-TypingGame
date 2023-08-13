@@ -10,6 +10,11 @@ const Home: React.FC = () => {
     const [isGameActive, setIsGameActive] = useState<boolean>(false);
     const inputRef = useRef<HTMLInputElement>(null);
 
+    const startGame = () => {
+        setScore(0);
+        setIsGameActive(true);
+    }      
+
     const resetGame = () => {
         setIsGameActive(false);
         setTimeLeft(10);
@@ -24,9 +29,9 @@ const Home: React.FC = () => {
         }
     }, [isGameActive]);
 
-    const startGame = () => {
-      setIsGameActive(true);
-    }
+    // const startGame = () => {
+    //   setIsGameActive(true);
+    // }
 
     useEffect(() => {
         if (isGameActive && timeLeft > 0) {
