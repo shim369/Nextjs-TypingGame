@@ -9,7 +9,7 @@
     flex-direction: column;
 }
 
-.currentWord {
+.currentWord, .message {
     margin-bottom: 10px;
 }
 
