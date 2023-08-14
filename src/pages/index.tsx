@@ -14,11 +14,6 @@ const Home: React.FC = () => {
     const [isGameActive, setIsGameActive] = useState<boolean>(false);
     const inputRef = useRef<HTMLInputElement>(null);
 
-    // ページが読み込まれるたびにスコアをリセット
-    useEffect(() => {
-        setScore(0);
-    }, []);
-
     const startGame = () => {
         setScore(0);
         setMessage("");
@@ -80,6 +75,11 @@ const Home: React.FC = () => {
             setTypedWord(typedWord.slice(0, -1));
         }
     }, [typedWord, currentWord]);
+
+    // ページが読み込まれるたびにスコアをリセット
+    useEffect(() => {
+        setScore(0);
+    }, []);
 
     return (
         <div>
