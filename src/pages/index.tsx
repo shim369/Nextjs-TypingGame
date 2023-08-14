@@ -9,7 +9,7 @@ const Home: React.FC = () => {
 	const [currentWord, setCurrentWord] = useState<string>("");
 	const [typedWord, setTypedWord] = useState<string>("");
 	const [score, setScore] = useState<number>(0);
-	const [message, setMessage] = useState<string>("ゲームを開始してください");
+	const [message, setMessage] = useState<string>("ゲームを開始してください。");
 	const [timeLeft, setTimeLeft] = useState<number>(10);
 	const [isGameActive, setIsGameActive] = useState<boolean>(false);
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -27,7 +27,7 @@ const Home: React.FC = () => {
 		setTimeLeft(10);
 		setScore(0);
 		setTypedWord("");
-		setMessage("リセットされました");
+		setMessage("リセットされました。");
 		fetchWord();
 	};
 
