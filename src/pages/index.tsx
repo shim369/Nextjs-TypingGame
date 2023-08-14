@@ -60,7 +60,6 @@ const Home: React.FC = () => {
             const randomWord = data.words[Math.floor(Math.random() * data.words.length)];
             setCurrentWord(randomWord);
         } catch (error) {
-            console.error("Error fetching words:", error);
             setMessage("単語の取得に失敗しました。もう一度試してください。");
         }
     }
