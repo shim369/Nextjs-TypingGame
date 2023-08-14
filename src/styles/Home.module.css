@@ -1,6 +1,4 @@
 .typeBox {
-    background: #000;
-    color: #fff;
     padding: 40px;
     max-width: 400px;
     margin: 30px auto;
@@ -9,8 +7,15 @@
     flex-direction: column;
 }
 
-.currentWord, .message {
-    margin-bottom: 10px;
+.currentWord {
+    color: #74e0dc;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.message {
+    color: #fff;
+    margin-bottom: 20px;
 }
 
 .startGame {
