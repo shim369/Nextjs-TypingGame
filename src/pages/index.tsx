@@ -114,7 +114,7 @@ const Home: React.FC = () => {
 				)}
 				<button onClick={resetGame} disabled={timeLeft == 10}>Reset Game</button>
 			</div>
-			<p>Remaining time: {timeLeft}seconds</p>
+			<p>Remaining time: {timeLeft} seconds</p>
 			<p>Score: {score}</p>
 		</div>
 	);
