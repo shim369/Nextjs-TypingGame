@@ -9,7 +9,7 @@ const Home: React.FC = () => {
 	const [currentWord, setCurrentWord] = useState<string>("");
 	const [typedWord, setTypedWord] = useState<string>("");
 	const [score, setScore] = useState<number>(0);
-	const [message, setMessage] = useState<string>("ゲームを開始してください。");
+	const [message, setMessage] = useState<string>("Please start the game.");
 	const [timeLeft, setTimeLeft] = useState<number>(10);
 	const [isGameActive, setIsGameActive] = useState<boolean>(false);
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -27,13 +27,13 @@ const Home: React.FC = () => {
 		setTimeLeft(10);
 		setScore(0);
 		setTypedWord("");
-		setMessage("リセットされました。");
+		setMessage("Reset.");
 		fetchWord();
 	};
 
 	useEffect(() => {
 		if (isGameActive && inputRef.current) {
-			setMessage("次の単語をタイピングしてください。");
+			setMessage("Please type this word.");
 			inputRef.current.focus();
 		}
 	}, [isGameActive]);
@@ -46,7 +46,7 @@ const Home: React.FC = () => {
 			return () => clearTimeout(timerId);
 		} else if (timeLeft === 0) {
 			setIsGameActive(false);
-			setMessage("タイムアップ！");
+			setMessage("Time up!");
 		}
 	}, [timeLeft, isGameActive]);
 
@@ -65,7 +65,7 @@ const Home: React.FC = () => {
 			setPreviousWord(randomWord); // 前回の単語を更新
 			setCurrentWord(randomWord);
 		} catch (error) {
-			setMessage("単語の取得に失敗しました。もう一度試してください。");
+			setMessage("Please try again.");
 		}
 	}
 
@@ -89,7 +89,7 @@ const Home: React.FC = () => {
 
 	return (
 		<div>
-			<h2>タイピングゲーム</h2>
+			<h1>Typing Game</h1>
 			<div className={styles.typeBox}>
 				{isGameActive ? (
 					<>
@@ -108,14 +108,14 @@ const Home: React.FC = () => {
 					<>
 						<p className={styles.message}>{message}</p>
 						<button onClick={startGame} className={styles.startGame} disabled={timeLeft == 0}>
-						ゲームを開始
+						Start Game
 						</button>
 					</>
 				)}
-				<button onClick={resetGame} disabled={timeLeft == 10}>リセット</button>
+				<button onClick={resetGame} disabled={timeLeft == 10}>Reset Game</button>
 			</div>
-			<p>残り時間: {timeLeft}秒</p>
-			<p>スコア: {score}</p>
+			<p>Remaining time: {timeLeft}seconds</p>
+			<p>Score: {score}</p>
 		</div>
 	);
 }
