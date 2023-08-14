@@ -102,12 +102,12 @@ const Home: React.FC = () => {
                 ) : (
                     <>
                         <p className={styles.message}>{message}</p>
-                        <button onClick={startGame} className={styles.startGame} disabled={score > 0}>
+                        <button onClick={startGame} className={styles.startGame} disabled={timeLeft == 0}>
                         ゲームを開始
                         </button>
                     </>
                 )}
-                <button onClick={resetGame} disabled={score < 1}>リセット</button>
+                <button onClick={resetGame} disabled={timeLeft == 10}>リセット</button>
             </div>
             <p>残り時間: {timeLeft}秒</p>
             <p>スコア: {score}</p>
