@@ -12,13 +12,14 @@ body {
 }
 
 body {
-	padding: 4rem;
-	color: #74e0dc;
+	padding: 2rem;
+	color: #f3d77b;
 	background: #000;
 }
 
-h2 {
-	color: #74e0dc;
+h1 {
+	color: #f3d77b;
+	font-size: 1.5em;
 }
 
 input {
@@ -33,7 +34,7 @@ input {
 button {
 	padding: 10px;
 	cursor: pointer;
-	background: #74e0dc;
+	background: #f3d77b;
 	color: #000;
 	border: none;
 	border-radius: 4px;

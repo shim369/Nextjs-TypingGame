@@ -1,8 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from "@/styles/Home.module.css";
 
-type WordData = {
-	words: string[];
+type PokemonData = {
+    name: string;
+    sprites: {
+        front_default: string;
+        other: {
+            'official-artwork': {
+                front_default: string;
+            }
+        }
+    };
 };
 
 const Home: React.FC = () => {
@@ -10,10 +18,13 @@ const Home: React.FC = () => {
 	const [typedWord, setTypedWord] = useState<string>("");
 	const [score, setScore] = useState<number>(0);
 	const [message, setMessage] = useState<string>("Please start the game.");
-	const [timeLeft, setTimeLeft] = useState<number>(10);
+	const [timeLeft, setTimeLeft] = useState<number>(60);
 	const [isGameActive, setIsGameActive] = useState<boolean>(false);
 	const inputRef = useRef<HTMLInputElement>(null);
 	const [previousWord, setPreviousWord] = useState<string>("");
+	const [pokemonImage, setPokemonImage] = useState<string>("");
+	const [pikachuImage, setPikachuImage] = useState<string>("");
+
 
 
 	const startGame = () => {
@@ -24,7 +35,7 @@ const Home: React.FC = () => {
 
 	const resetGame = () => {
 		setIsGameActive(false);
-		setTimeLeft(10);
+		setTimeLeft(60);
 		setScore(0);
 		setTypedWord("");
 		setMessage("Reset.");
@@ -33,7 +44,7 @@ const Home: React.FC = () => {
 
 	useEffect(() => {
 		if (isGameActive && inputRef.current) {
-			setMessage("Please type this word.");
+			setMessage("Please type this Pokemon.");
 			inputRef.current.focus();
 		}
 	}, [isGameActive]);
@@ -52,22 +63,31 @@ const Home: React.FC = () => {
 
 	const fetchWord = async () => {
 		try {
-			const response = await fetch('/words.json');
-			const data: WordData = await response.json();
+			const randomId = Math.floor(Math.random() * 800) + 1;
+			const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`);
+			const data: PokemonData = await response.json();
 			
-			let randomWord = data.words[Math.floor(Math.random() * data.words.length)];
+			let randomWord = data.name;
 			
-			// 2回連続で同じ単語が出ないようにするためのループ
-			while (randomWord === previousWord && data.words.length > 1) {
-				randomWord = data.words[Math.floor(Math.random() * data.words.length)];
+			while (randomWord === previousWord) {
+				randomWord = data.name;
 			}
 	
-			setPreviousWord(randomWord); // 前回の単語を更新
+			setPreviousWord(randomWord); 
 			setCurrentWord(randomWord);
+			
+			const officialArtwork = data.sprites.other['official-artwork'].front_default;
+			if (officialArtwork) {
+				setPokemonImage(officialArtwork);
+			} else {
+				setPokemonImage(data.sprites.front_default);
+			}
+	
 		} catch (error) {
 			setMessage("Please try again.");
 		}
-	}
+	}	
+	
 
 	useEffect(() => {
 		fetchWord();
@@ -80,43 +100,59 @@ const Home: React.FC = () => {
 			setTypedWord("");
 		}
 	}, [typedWord, currentWord]);
+
+	useEffect(() => {
+		const fetchPikachu = async () => {
+			try {
+				const response = await fetch('https://pokeapi.co/api/v2/pokemon/25');
+				const data = await response.json();
+				setPikachuImage(data.sprites.other['official-artwork'].front_default);
+			} catch (error) {
+				console.error("Error fetching Pikachu data:", error);
+			}
+		}
+
+		fetchPikachu();
+	}, []);
+
 	
 
-	// ページが読み込まれるたびにスコアをリセット
 	useEffect(() => {
 		setScore(0);
 	}, []);
 
 	return (
-		<div>
-			<h1>Typing Game</h1>
-			<div className={styles.typeBox}>
-				{isGameActive ? (
-					<>
-						<p className={styles.message}>{message}</p>
-						<p className={styles.currentWord}>{currentWord}</p>
-						<input 
-							ref={inputRef}
-							type="text"
-							value={typedWord}
-							onChange={(e) => {
-								setTypedWord(e.target.value);
-							}}
-						/>
-					</>
-				) : (
-					<>
-						<p className={styles.message}>{message}</p>
-						<button onClick={startGame} className={styles.startGame} disabled={timeLeft == 0}>
-						Start Game
-						</button>
-					</>
-				)}
-				<button onClick={resetGame} disabled={timeLeft == 10}>Reset Game</button>
-			</div>
-			<p>Remaining time: {timeLeft} seconds</p>
-			<p>Score: {score}</p>
-		</div>
+        <div>
+			<img src={pikachuImage} alt="Pikachu" width="90" height="90" />
+            <h1>Pokemon Typing Game</h1>
+            <div className={styles.typeBox}>
+                {isGameActive ? (
+                    <>
+                        <p className={styles.message}>{message}</p>
+                        <p><img src={pokemonImage} alt={currentWord} width="130" height="130" /></p>
+                        <p className={styles.currentWord}>{currentWord}</p>
+                        <input 
+                            ref={inputRef}
+                            type="text"
+                            value={typedWord}
+                            onChange={(e) => {
+                                setTypedWord(e.target.value);
+                            }}
+                        />
+                    </>
+                ) : (
+                    <>
+                        <p className={styles.message}>{message}</p>
+                        <button onClick={startGame} className={styles.startGame} disabled={timeLeft == 0}>
+                        Start Game
+                        </button>
+                    </>
+                )}
+                <button onClick={resetGame} disabled={timeLeft == 60}>Reset Game</button>
+            </div>
+            <p>Remaining time: {timeLeft} seconds</p>
+            <p>Score: {score}</p>
+        </div>
 	);
 }
 

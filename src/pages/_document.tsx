@@ -4,8 +4,8 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <title>Typing Game</title>
-        <meta name="description" content="Typing Game" />
+        <title>Pokemon Typing Game</title>
+        <meta name="description" content="Pokemon Typing Game" />
       </Head>
       <body>
         <Main />
