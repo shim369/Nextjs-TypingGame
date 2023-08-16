@@ -1,26 +1,26 @@
 .typeBox {
-    padding: 20px;
-    max-width: 400px;
-    margin: 30px auto;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    background: #313131;
+	padding: 20px;
+	max-width: 400px;
+	margin: 0 auto 20px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+	background: #313131;
 	border-radius: 4px;
 }
 
 .currentWord {
-    color: #f3d77b;
-    margin-bottom: 20px;
-    font-size: 2em;
+	color: #f3d77b;
+	margin-bottom: 20px;
+	font-size: 2em;
 }
 
 .message {
-    color: #fff;
-    margin-bottom: 20px;
+	color: #fff;
+	margin-bottom: 20px;
 }
 
 .startGame {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }

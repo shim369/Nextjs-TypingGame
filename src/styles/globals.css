@@ -12,14 +12,26 @@ body {
 }
 
 body {
-	padding: 2rem;
 	color: #f3d77b;
 	background: #000;
+}
+
+header {
+	padding: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+main {
+	padding: 0 2rem;
 }
 
 h1 {
 	color: #f3d77b;
 	font-size: 1.5em;
+	margin-right: 10px;
 }
 
 input {
@@ -29,6 +41,11 @@ input {
 	height: 50px;
 	margin-bottom: 20px;
 	font-size: 2em;
+}
+
+input:focus {
+	outline: none;
+	box-shadow: none;
 }
 
 button {

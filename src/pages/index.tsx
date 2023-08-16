@@ -1,16 +1,17 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from "@/styles/Home.module.css";
+import Image from 'next/image';
 
 type PokemonData = {
-    name: string;
-    sprites: {
-        front_default: string;
-        other: {
-            'official-artwork': {
-                front_default: string;
-            }
-        }
-    };
+	name: string;
+	sprites: {
+		front_default: string;
+		other: {
+			'official-artwork': {
+				front_default: string;
+			}
+		}
+	};
 };
 
 const Home: React.FC = () => {
@@ -23,7 +24,6 @@ const Home: React.FC = () => {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const [previousWord, setPreviousWord] = useState<string>("");
 	const [pokemonImage, setPokemonImage] = useState<string>("");
-	const [pikachuImage, setPikachuImage] = useState<string>("");
 
 
 
@@ -95,64 +95,52 @@ const Home: React.FC = () => {
 
 	useEffect(() => {
 		if (currentWord === typedWord) {
-			setScore(prevScore => prevScore + 1);
+			setScore(prevScore => prevScore + 10);
 			fetchWord();
 			setTypedWord("");
 		}
 	}, [typedWord, currentWord]);
 
 	useEffect(() => {
-		const fetchPikachu = async () => {
-			try {
-				const response = await fetch('https://pokeapi.co/api/v2/pokemon/25');
-				const data = await response.json();
-				setPikachuImage(data.sprites.other['official-artwork'].front_default);
-			} catch (error) {
-				console.error("Error fetching Pikachu data:", error);
-			}
-		}
-
-		fetchPikachu();
-	}, []);
-
-	
-
-	useEffect(() => {
 		setScore(0);
 	}, []);
 
 	return (
-        <div>
-			<img src={pikachuImage} alt="Pikachu" width="90" height="90" />
-            <h1>Pokemon Typing Game</h1>
-            <div className={styles.typeBox}>
-                {isGameActive ? (
-                    <>
-                        <p className={styles.message}>{message}</p>
-                        <p><img src={pokemonImage} alt={currentWord} width="130" height="130" /></p>
-                        <p className={styles.currentWord}>{currentWord}</p>
-                        <input 
-                            ref={inputRef}
-                            type="text"
-                            value={typedWord}
-                            onChange={(e) => {
-                                setTypedWord(e.target.value);
-                            }}
-                        />
-                    </>
-                ) : (
-                    <>
-                        <p className={styles.message}>{message}</p>
-                        <button onClick={startGame} className={styles.startGame} disabled={timeLeft == 0}>
-                        Start Game
-                        </button>
-                    </>
-                )}
-                <button onClick={resetGame} disabled={timeLeft == 60}>Reset Game</button>
-            </div>
-            <p>Remaining time: {timeLeft} seconds</p>
-            <p>Score: {score}</p>
-        </div>
+		<div className={styles.wrapper}>
+			<header>
+			<Image src="/25.webp" alt="Pikachu" width={90} height={90} priority />
+			<h1>Pokemon Typing Game</h1>
+			</header>
+			<main>
+			<div className={styles.typeBox}>
+				{isGameActive ? (
+					<>
+						<p className={styles.message}>{message}</p>
+						<p><img src={pokemonImage} alt={currentWord} width="130" height="130" /></p>
+						<p className={styles.currentWord}>{currentWord}</p>
+						<input 
+							ref={inputRef}
+							type="text"
+							value={typedWord}
+							onChange={(e) => {
+								setTypedWord(e.target.value);
+							}}
+						/>
+					</>
+				) : (
+					<>
+						<p className={styles.message}>{message}</p>
+						<button onClick={startGame} className={styles.startGame} disabled={timeLeft == 0}>
+						Start Game
+						</button>
+					</>
+				)}
+				<button onClick={resetGame} disabled={timeLeft == 60}>Reset Game</button>
+			</div>
+			<p>Remaining time: {timeLeft} seconds</p>
+			<p>Score: {score}</p>
+			</main>
+		</div>
 	);
 }
 
