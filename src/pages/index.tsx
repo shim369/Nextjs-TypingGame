@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from "@/styles/Home.module.css";
 import Image from 'next/image';
+import Head from 'next/head';
 
 type PokemonData = {
 	name: string;
@@ -106,6 +107,10 @@ const Home: React.FC = () => {
 	}, []);
 
 	return (
+		<>
+		<Head>
+			<title>Pokemon Typing Game</title>
+		</Head>
 		<div className={styles.wrapper}>
 			<header>
 			<Image src="/25.webp" alt="Pikachu" width={90} height={90} priority />
@@ -141,6 +146,7 @@ const Home: React.FC = () => {
 			<p>Score: {score}</p>
 			</main>
 		</div>
+		</>
 	);
 }
 

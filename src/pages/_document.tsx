@@ -4,7 +4,6 @@ export default function Document() {
 	return (
 		<Html lang="en">
 			<Head>
-				<title>Pokemon Typing Game</title>
 				<meta name="description" content="Pokemon Typing Game by PokeAPI" />
 			</Head>
 			<body>
