@@ -5,6 +5,7 @@ export default function Document() {
 		<Html lang="en">
 			<Head>
 				<meta name="description" content="Pokemon Typing Game by PokeAPI" />
+				<meta name="google-site-verification" content="n9PDU346DViaXjImHRDlZeCU0X0w95-TYQwpbWoTD9A" />
 			</Head>
 			<body>
 				<Main />
