@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://pokemon-typing-game.vercel.app
+
+# Sitemaps
+Sitemap: https://pokemon-typing-game.vercel.app/sitemap.xml
