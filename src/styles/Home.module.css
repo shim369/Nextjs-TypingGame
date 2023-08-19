@@ -6,21 +6,23 @@
 	justify-content: center;
 	flex-direction: column;
 	text-align: center;
-	background: #313131;
+	background: #012d5e;
 	border-radius: 4px;
 }
 
 .currentWord {
-	color: #f3d77b;
+	color: #fcd95e;
 	margin-bottom: 20px;
 	font-size: 2em;
 }
 
 .message {
 	color: #fff;
+	font-weight: 600;
 	margin-bottom: 20px;
 }
 
 .startGame {
 	margin-bottom: 20px;
+	font-weight: 600;
 }
