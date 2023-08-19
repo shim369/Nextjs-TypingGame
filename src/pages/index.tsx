@@ -15,8 +15,12 @@ type PokemonData = {
 	};
 };
 
+type PokemonState = {
+	word: string;
+	image: string;
+};
+
 const Home: React.FC = () => {
-	const [currentWord, setCurrentWord] = useState<string>("");
 	const [typedWord, setTypedWord] = useState<string>("");
 	const [score, setScore] = useState<number>(0);
 	const [message, setMessage] = useState<string>("Please start the game.");
@@ -24,15 +28,13 @@ const Home: React.FC = () => {
 	const [isGameActive, setIsGameActive] = useState<boolean>(false);
 	const inputRef = useRef<HTMLInputElement>(null);
 	const [previousWord, setPreviousWord] = useState<string>("");
-	const [pokemonImage, setPokemonImage] = useState<string>("");
-
-
+	const [pokemon, setPokemon] = useState<PokemonState>({ word: "", image: "" });
 
 	const startGame = () => {
 		setScore(0);
 		setMessage("");
 		setIsGameActive(true);
-	}
+	};
 
 	const resetGame = () => {
 		setIsGameActive(false);
@@ -68,39 +70,29 @@ const Home: React.FC = () => {
 			const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`);
 			const data: PokemonData = await response.json();
 			
-			let randomWord = data.name;
-			
-			while (randomWord === previousWord) {
-				randomWord = data.name;
-			}
-	
-			setPreviousWord(randomWord); 
-			setCurrentWord(randomWord);
-			
+			const randomWord = data.name !== previousWord ? data.name : "";
 			const officialArtwork = data.sprites.other['official-artwork'].front_default;
-			if (officialArtwork) {
-				setPokemonImage(officialArtwork);
-			} else {
-				setPokemonImage(data.sprites.front_default);
-			}
-	
+			const image = officialArtwork ? officialArtwork : data.sprites.front_default;
+
+			setPreviousWord(randomWord);
+			setPokemon({ word: randomWord, image });
+
 		} catch (error) {
 			setMessage("Please try again.");
 		}
-	}	
+	};	
 	
-
 	useEffect(() => {
 		fetchWord();
 	}, []);
 
 	useEffect(() => {
-		if (currentWord === typedWord) {
+		if (pokemon.word === typedWord) {
 			setScore(prevScore => prevScore + 10);
 			fetchWord();
 			setTypedWord("");
 		}
-	}, [typedWord, currentWord]);
+	}, [typedWord, pokemon.word]);
 
 	useEffect(() => {
 		setScore(0);
@@ -121,8 +113,8 @@ const Home: React.FC = () => {
 				{isGameActive ? (
 					<>
 						<p className={styles.message}>{message}</p>
-						<p><img src={pokemonImage} alt={currentWord} width="130" height="130" /></p>
-						<p className={styles.currentWord}>{currentWord}</p>
+						<p><img src={pokemon.image} alt={pokemon.word} width="130" height="130" /></p>
+						<p className={styles.currentWord}>{pokemon.word}</p>
 						<input 
 							ref={inputRef}
 							type="text"
