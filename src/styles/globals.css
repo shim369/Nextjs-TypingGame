@@ -2,6 +2,7 @@
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
+	font-family: 'Josefin Sans', sans-serif;
 }
 
 html,
@@ -12,36 +13,41 @@ body {
 }
 
 body {
-	color: #fcd95e;
-	background: #024c9c;
+	background: #f5f5f5;
 	font-weight: 600;
 }
 
 header {
-	padding: 2rem;
+	padding: 5px 20px;
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
-	flex-direction: column;
+	background: #fff;
 }
 
 main {
-	padding: 0 2rem;
+	padding: 2rem;
 }
 
 h1 {
 	color: #fcd95e;
-	font-size: 1.5em;
-	margin-right: 10px;
+	font-size: 2em;
+	margin-left: 10px;
+	font-weight: bold;
+	-webkit-text-stroke: 1px #012d5e;
 }
 
 input {
 	border: none;
-	background: #fff;
-	padding: 10px;
-	height: 50px;
-	margin-bottom: 20px;
-	font-size: 2em;
+	background: #033bca36;
+	padding: 20px;
+	max-width: 80%;
+	width: 1000px;
+	height: 90px;
+	margin: 0 auto 20px;
+	font-size: 3em;
+	text-align: center;
+	font-weight: bold;
 }
 
 input:focus {
@@ -50,12 +56,15 @@ input:focus {
 }
 
 button {
-	padding: 10px;
+	padding: 20px;
 	cursor: pointer;
 	background: #fcd95e;
-	color: #012d5e;
+	color: #000;
 	border: none;
-	border-radius: 4px;
+	border-radius: 30px;
+	width: 300px;
+	font-size: 1.3em;
+	margin: 0 5px;
 }
 
 button:hover {
@@ -63,7 +72,7 @@ button:hover {
 }
 
 button:disabled {
-	background: #696969;
+	background: #a5a4a4;
 	opacity: 1;
 	cursor: default;
 }

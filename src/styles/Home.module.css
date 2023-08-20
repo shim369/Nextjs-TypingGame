@@ -1,28 +1,61 @@
+.headLeft {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.headRight {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.headRight p {
+	margin-left: 20px;
+	color: #012d5e;
+	font-size: 1.3em;
+}
+
+.headRight p span {
+	color: #fcd95e;
+	margin-left: 5px;
+	font-size: 1.6em;
+}
+
 .typeBox {
-	padding: 20px;
-	max-width: 400px;
+	padding: 40px;
+	max-width: 100%;
 	margin: 0 auto 20px;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	text-align: center;
-	background: #012d5e;
+	background: #fff;
 	border-radius: 4px;
 }
 
 .currentWord {
 	color: #fcd95e;
+	margin-top: 20px;
 	margin-bottom: 20px;
-	font-size: 2em;
+	font-size: 4em;
+	font-weight: bold;
+	-webkit-text-stroke: 1px #012d5e;
 }
 
 .message {
-	color: #fff;
+	color: #012d5e;
 	font-weight: 600;
 	margin-bottom: 20px;
+	font-size: 1.3em;
 }
 
-.startGame {
-	margin-bottom: 20px;
-	font-weight: 600;
+.btnBox {
+	display: flex;
+	justify-content: center;
+}
+
+.startGameBtn, .resetGameBtn {
+	margin-top: 20px;
+	font-weight: 300;
 }

@@ -105,16 +105,21 @@ const Home: React.FC = () => {
 		</Head>
 		<div className={styles.wrapper}>
 			<header>
-			<Image src="/25.webp" alt="Pikachu" width={90} height={90} priority />
-			<h1>Pokemon Typing Game</h1>
+				<div className={styles.headLeft}>
+					<Image src="/25.webp" alt="Pikachu" width={90} height={90} priority />
+					<h1>Pokemon Typing Game</h1>
+				</div>
+				<div className={styles.headRight}>
+					<p>Time:<span>{timeLeft}</span></p>
+					<p>Score:<span>{score}</span></p>
+				</div>
 			</header>
 			<main>
-			<div className={styles.typeBox}>
-				{isGameActive ? (
-					<>
-						<p className={styles.message}>{message}</p>
-						<p><img src={pokemon.image} alt={pokemon.word} width="130" height="130" /></p>
-						<p className={styles.currentWord}>{pokemon.word}</p>
+				<div className={styles.typeBox}>
+					<p className={styles.message}>{message}</p>
+					<p><img src={pokemon.image} alt={pokemon.word} width="130" height="130" /></p>
+					<p className={styles.currentWord}>{pokemon.word}</p>
+					{isGameActive ? (
 						<input 
 							ref={inputRef}
 							type="text"
@@ -123,19 +128,24 @@ const Home: React.FC = () => {
 								setTypedWord(e.target.value);
 							}}
 						/>
-					</>
-				) : (
-					<>
-						<p className={styles.message}>{message}</p>
-						<button onClick={startGame} className={styles.startGame} disabled={timeLeft == 0}>
-						Start Game
+					) : null}
+					<div className={styles.btnBox}>
+						<button 
+							onClick={startGame} 
+							className={styles.startGameBtn} 
+							disabled={isGameActive || timeLeft === 0}
+						>
+							Start Game
 						</button>
-					</>
-				)}
-				<button onClick={resetGame} disabled={timeLeft == 60}>Reset Game</button>
-			</div>
-			<p>Remaining time: {timeLeft} seconds</p>
-			<p>Score: {score}</p>
+						<button
+							onClick={resetGame}
+							className={styles.resetGameBtn}
+							disabled={timeLeft === 60}
+						>
+							Reset Game
+						</button>
+					</div>
+				</div>
 			</main>
 		</div>
 		</>
