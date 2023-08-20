@@ -20,6 +20,7 @@
 	color: #fcd95e;
 	margin-left: 5px;
 	font-size: 1.6em;
+	-webkit-text-stroke: 1px #012d5e;
 }
 
 .typeBox {
