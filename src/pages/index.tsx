@@ -34,6 +34,7 @@ const Home: React.FC = () => {
 		setScore(0);
 		setMessage("");
 		setIsGameActive(true);
+		fetchWord();
 	};
 
 	const resetGame = () => {
@@ -80,11 +81,11 @@ const Home: React.FC = () => {
 		} catch (error) {
 			setMessage("Please try again.");
 		}
-	};	
+	};
 	
-	useEffect(() => {
-		fetchWord();
-	}, []);
+	// useEffect(() => {
+	// 	fetchWord();
+	// }, []);
 
 	useEffect(() => {
 		if (pokemon.word === typedWord) {
@@ -117,8 +118,12 @@ const Home: React.FC = () => {
 			<main>
 				<div className={styles.typeBox}>
 					<p className={styles.message}>{message}</p>
-					<p><img src={pokemon.image} alt={pokemon.word} width="130" height="130" /></p>
-					<p className={styles.currentWord}>{pokemon.word}</p>
+					{isGameActive && pokemon.word && (
+						<>
+							<p><img src={pokemon.image} alt={pokemon.word} width="130" height="130" /></p>
+							<p className={styles.currentWord}>{pokemon.word}</p>
+						</>
+					)}
 					{isGameActive ? (
 						<input 
 							ref={inputRef}
