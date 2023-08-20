@@ -37,10 +37,6 @@
 	border-radius: 4px;
 }
 
-.typeBoxInner {
-
-}
-
 .currentWord {
 	color: #fcd95e;
 	margin-top: 3vh;
@@ -60,6 +56,12 @@
 .btnBox {
 	display: flex;
 	justify-content: center;
+}
+
+@media (max-width: 800px) {
+	.btnBox {
+		flex-direction: column;
+	}
 }
 
 .startGameBtn, .resetGameBtn {
