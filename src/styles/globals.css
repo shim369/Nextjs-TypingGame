@@ -23,16 +23,10 @@ body {
 header {
 	padding: 5px 20px;
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	align-items: center;
 	background: #fff;
 	min-height: 100px;
-}
-
-@media (max-width: 900px) {
-	header {
-		padding: 5px;
-	}
 }
 
 main {
@@ -43,6 +37,15 @@ main {
 	align-items: center;
 }
 
+@media (max-width: 600px) {
+	header {
+		padding: 10px;
+	}
+	main {
+		padding: 3vh 10px;
+	}	
+}
+
 h1 {
 	color: #fcd95e;
 	font-size: 2em;
@@ -51,7 +54,7 @@ h1 {
 	-webkit-text-stroke: 1px #012d5e;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 600px) {
 	h1 {
 		font-size: 1.2em;
 		margin-left: 5px;
@@ -72,7 +75,7 @@ input {
 	font-weight: bold;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 600px) {
 	input {
 		font-size: 2em;
 		padding: 10px;
