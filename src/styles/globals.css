@@ -63,13 +63,20 @@ input {
 	background: #033bca36;
 	color: #012d5e;
 	padding: 20px;
-	max-width: 80%;
+	max-width: 100%;
 	width: 1000px;
 	height: 90px;
 	margin: 0 auto 3vh;
 	font-size: 3em;
 	text-align: center;
 	font-weight: bold;
+}
+
+@media (max-width: 900px) {
+	input {
+		font-size: 2em;
+		padding: 10px;
+	}
 }
 
 input:focus {
