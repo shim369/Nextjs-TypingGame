@@ -110,13 +110,13 @@ const Home: React.FC = () => {
 					<Image src="/25.webp" alt="Pikachu" width={90} height={90} priority />
 					<h1>Pokemon Typing Game</h1>
 				</div>
-				<div className={styles.headRight}>
-					<p>Time:<span>{timeLeft}</span></p>
-					<p>Score:<span>{score}</span></p>
-				</div>
 			</header>
 			<main>
 				<div className={styles.typeBox}>
+					<div className={styles.timeScore}>
+						<p>Time:<span>{timeLeft}</span></p>
+						<p>Score:<span>{score}</span></p>
+					</div>
 					<p className={styles.message}>{message}</p>
 					{isGameActive && pokemon.word && (
 						<>

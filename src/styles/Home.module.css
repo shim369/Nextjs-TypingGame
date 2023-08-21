@@ -4,19 +4,21 @@
 	align-items: center;
 }
 
-.headRight {
+.timeScore {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-bottom: 3vh;
 }
 
-.headRight p {
+
+.timeScore p {
 	margin-left: 20px;
 	color: #012d5e;
 	font-size: 1.3em;
 }
 
-.headRight p span {
+.timeScore p span {
 	color: #fcd95e;
 	margin-left: 10px;
 	font-size: 1.6em;
@@ -37,20 +39,20 @@
 	border-radius: 4px;
 }
 
-.currentWord {
-	color: #fcd95e;
-	margin-top: 3vh;
-	margin-bottom: 3vh;
-	font-size: 4em;
-	font-weight: bold;
-	-webkit-text-stroke: 1px #012d5e;
-}
-
 .message {
 	color: #012d5e;
 	font-weight: 600;
-	margin-bottom: 3vh;
+	margin-bottom: 2vh;
 	font-size: 1.3em;
+}
+
+.currentWord {
+	color: #fcd95e;
+	margin-top: 2vh;
+	margin-bottom: 2vh;
+	font-size: 4em;
+	font-weight: bold;
+	-webkit-text-stroke: 1px #012d5e;
 }
 
 .btnBox {
@@ -67,4 +69,5 @@
 .startGameBtn, .resetGameBtn {
 	margin-top: 3vh;
 	font-weight: 300;
+    box-shadow: 0px 11px 15px -4px #cfcece;
 }
