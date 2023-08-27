@@ -48,7 +48,7 @@ const Home: React.FC = () => {
 
 	useEffect(() => {
 		if (isGameActive && inputRef.current) {
-			setMessage("Please type this Pokemon.");
+			setMessage("Please type this name.");
 			inputRef.current.focus();
 		}
 	}, [isGameActive]);
@@ -82,10 +82,6 @@ const Home: React.FC = () => {
 			setMessage("Please try again.");
 		}
 	};
-	
-	// useEffect(() => {
-	// 	fetchWord();
-	// }, []);
 
 	useEffect(() => {
 		if (pokemon.word === typedWord) {
