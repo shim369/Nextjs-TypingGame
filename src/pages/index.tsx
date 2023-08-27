@@ -102,13 +102,13 @@ const Home: React.FC = () => {
 	return (
 		<>
 		<Head>
-			<title>Pokemon Typing Game</title>
+			<title>Poke Typing Game</title>
 		</Head>
 		<div className={styles.wrapper}>
 			<header>
 				<div className={styles.headLeft}>
 					<Image src="/25.webp" alt="Pikachu" width={90} height={90} priority />
-					<h1>Pokemon Typing Game</h1>
+					<h1>Poke Typing Game</h1>
 				</div>
 				<div className={styles.headRight}>
 					<p>Time:<span>{timeLeft}</span></p>

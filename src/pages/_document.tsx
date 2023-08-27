@@ -4,7 +4,7 @@ export default function Document() {
 	return (
 		<Html lang="en">
 			<Head>
-				<meta name="description" content="Pokemon Typing Game by PokeAPI" />
+				<meta name="description" content="Poke Typing Game by PokeAPI" />
 				<meta name="google-site-verification" content="n9PDU346DViaXjImHRDlZeCU0X0w95-TYQwpbWoTD9A" />
 				<link rel="preload" href="https://fonts.gstatic.com/s/josefinsans/v26/Qw3PZQNVED7rKGKxtqIqX5E-AVSJrOCfjY46_N_XbMZhKSbpUVzEEQ.woff" as="font" type="font/woff" crossOrigin="anonymous" />
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
